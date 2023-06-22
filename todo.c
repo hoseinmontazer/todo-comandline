@@ -20,7 +20,7 @@
 // return true if the file specified by the filename exists
 bool file_exists(const char *filename)
 {
-	printf(filename);
+	//printf(filename);
     FILE *fp = fopen(filename, "r");
     bool is_exist = false;
     if (fp != NULL)
@@ -28,7 +28,7 @@ bool file_exists(const char *filename)
         is_exist = true;
         fclose(fp); // close the file
     }
-	printf("aaaaa");
+	// printf("aaaaa");
     return is_exist;
 }
 
@@ -47,15 +47,15 @@ int main (int argc, char** argv)
 	printf("HOME : %s\n", getenv("HOME"));
 	printf("bbbbbbbb %s\n",pathAddr);
 	strcat(home_user_dir,pathAddr);
-	printf("%s\n",home_user_dir);
-	printf("Size home_user_dir is: %d\n", strlen(home_user_dir));
+	printf("last path is %s\n",home_user_dir);
+	//printf("Size home_user_dir is: \n", strlen(home_user_dir));
 
     //int range_home_user_dir= strlen(home_user_dir) + strlen(filename);
     //printf("home_user_dir 1  Size is: %d\n", home_user_dir);
 	strcat(file_path1,home_user_dir);
-	printf("%s\n",file_path1);
-	printf("%s\n",file_path);
-	printf("%d\n", strcmp(file_path1, file_path));
+	printf("path1 is %s\n",file_path1);
+	printf("path is %s\n",file_path);
+	printf("compares is %d\n", strcmp(file_path1, file_path));
 
 	printf("-------------------------------------- \n");
 	if (file_exists(file_path))
@@ -64,7 +64,7 @@ int main (int argc, char** argv)
         printf("File %s doesn't exist. \n", file_path);
 	//check_path(file_path);
 	//checked(home_user_dir,foldername ,filename);
-	printf("hiiiiiiiiiiiiiii");
+	printf("hiiiiiiiiiiiiiii new world \n");
 	if( argc == 2 )
 	{
     	printf("The argument supplied is %s\n", argv[1]);
