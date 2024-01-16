@@ -70,7 +70,9 @@ int main (int argc, char** argv)
 
 	
 	yellow();
-	printf("================== TODO LIST ================== \n");
+	printf("=============================================== \n");
+	printf("=                   TODO LIST                 = \n");
+	printf("=============================================== \n");
 	reset();
 	if (file_exists(Temp_Home_User_Dir))
         printf("File path exist \n", Temp_Home_User_Dir);
