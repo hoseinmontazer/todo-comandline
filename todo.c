@@ -37,40 +37,45 @@ bool file_exists(const char *filename)
 int main (int argc, char** argv)
 {
 
-	//const char Home_file_name[] = "~/todo/data.json";
-	char foldername [200];
-	char filename[200];
-	char * pathAddr = "/.todo/data.json";
- 	char * home_user_dir= getenv("HOME");
-	char file_path[200] =  "/home/hosein/.todo/data.json";
-	char file_path1[200];
-	printf("HOME : %s\n", getenv("HOME"));
-	printf("bbbbbbbb %s\n",pathAddr);
-	strcat(home_user_dir,pathAddr);
-	printf("last path is %s\n",home_user_dir);
-	//printf("Size home_user_dir is: \n", strlen(home_user_dir));
+	char Temp_Home_User_Dir [200];
+	char TEMP_Todo_Path [200];
+	char Temp_Todo_File_Name [200];
+    char FULL_Todo_Path [200];
 
-    //int range_home_user_dir= strlen(home_user_dir) + strlen(filename);
-    //printf("home_user_dir 1  Size is: %d\n", home_user_dir);
-	strcat(file_path1,home_user_dir);
-	printf("path1 is %s\n",file_path1);
-	printf("path is %s\n",file_path);
-	printf("compares is %d\n", strcmp(file_path1, file_path));
+	char * Todo_File_Name = "/.todo/data.json";
+	char * Todo_Path = "/.todo/data.json";
+ 	char * Home_User_Dir= getenv("HOME");
+
+	printf("Home path is %s\n",Home_User_Dir);
+	printf("Todo_File_name path is %s\n",Todo_File_Name);
+
+	strcat(Temp_Home_User_Dir,Home_User_Dir);
+	strcat(Temp_Home_User_Dir,Todo_File_Name);
+
+
+	strcat(FULL_Todo_Path,Home_User_Dir);
+	strcat(FULL_Todo_Path,Todo_File_Name);
+
+
+	printf("hamed %s\n",Temp_Home_User_Dir);
 
 	printf("-------------------------------------- \n");
-	if (file_exists(file_path))
-        printf("File %s exists \n", file_path);
+	if (file_exists(Temp_Home_User_Dir))
+        printf("File %s exists \n", Temp_Home_User_Dir);
     else
-        printf("File %s doesn't exist. \n", file_path);
-	//check_path(file_path);
-	//checked(home_user_dir,foldername ,filename);
+        printf("File %s doesn't exist. \n", Temp_Home_User_Dir);
+
 	printf("hiiiiiiiiiiiiiii new world \n");
 	if( argc == 2 )
 	{
     	printf("The argument supplied is %s\n", argv[1]);
-		//return 0;
+
 		if (strcmp( argv[1] ,"init") ==0){
-			init_path (home_user_dir,foldername ,filename);
+			printf("path issssssssssss %s \n",Temp_Home_User_Dir);
+			printf("path issssssssssss %s \n",Home_User_Dir );
+			printf("path issssssssssss %s \n",Todo_File_Name );
+			init_path (Home_User_Dir ,Todo_File_Name);
+
 
 		}
 
@@ -81,8 +86,8 @@ int main (int argc, char** argv)
 	}
 	else
 	{
-		list_task (home_user_dir,foldername ,filename);
-		//return 0;
+		list_task (Home_User_Dir,Todo_Path ,Todo_File_Name);
+
 	}
 
 
