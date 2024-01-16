@@ -15,6 +15,17 @@
 
 
 
+void red () {
+	printf("\033[1;31m");
+}
+
+void yellow () {
+	printf("\033[1;33m");
+}
+
+void reset () {
+	printf("\033[0m");
+}
 
 
 // return true if the file specified by the filename exists
@@ -46,8 +57,8 @@ int main (int argc, char** argv)
 	char * Todo_Path = "/.todo/data.json";
  	char * Home_User_Dir= getenv("HOME");
 
-	printf("Home path is %s\n",Home_User_Dir);
-	printf("Todo_File_name path is %s\n",Todo_File_Name);
+	// printf("Home path is %s\n",Home_User_Dir);
+	// printf("Todo_File_name path is %s\n",Todo_File_Name);
 
 	strcat(Temp_Home_User_Dir,Home_User_Dir);
 	strcat(Temp_Home_User_Dir,Todo_File_Name);
@@ -57,23 +68,24 @@ int main (int argc, char** argv)
 	strcat(FULL_Todo_Path,Todo_File_Name);
 
 
-	printf("hamed %s\n",Temp_Home_User_Dir);
-
-	printf("-------------------------------------- \n");
+	
+	yellow();
+	printf("================== TODO LIST ================== \n");
+	reset();
 	if (file_exists(Temp_Home_User_Dir))
-        printf("File %s exists \n", Temp_Home_User_Dir);
+        printf("File path exist \n", Temp_Home_User_Dir);
     else
         printf("File %s doesn't exist. \n", Temp_Home_User_Dir);
 
-	printf("hiiiiiiiiiiiiiii new world \n");
+	// ("hiiiiiiiiiiiiiii new world \n");
 	if( argc == 2 )
 	{
     	printf("The argument supplied is %s\n", argv[1]);
 
 		if (strcmp( argv[1] ,"init") ==0){
-			printf("path issssssssssss %s \n",Temp_Home_User_Dir);
-			printf("path issssssssssss %s \n",Home_User_Dir );
-			printf("path issssssssssss %s \n",Todo_File_Name );
+			// printf("path issssssssssss %s \n",Temp_Home_User_Dir);
+			// printf("path issssssssssss %s \n",Home_User_Dir );
+			// printf("path issssssssssss %s \n",Todo_File_Name );
 			init_path (Home_User_Dir ,Todo_File_Name);
 
 
