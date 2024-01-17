@@ -8,7 +8,7 @@
 #include <dirent.h>
 #include <dirent.h>
 #include <errno.h>
-
+#include <cjson/cJSON.h>
 #include "init_path.h"
 
 
@@ -58,6 +58,18 @@ strcat(Temp_Home_User_Dir,Todo_File_Name);
     else if(access (Temp_Home_User_Dir, F_OK) == 0)
     {
         printf("data file is exsited in %s .\n", Temp_Home_User_Dir);
+        cJSON *json = cJSON_CreateObject();
+        cJSON_AddStringToObject(json, "name", "John Doe");
+        cJSON_AddNumberToObject(json, "age", 30);
+        cJSON_AddStringToObject(json, "email", "john.doe@example.com");
+        char *json_str = cJSON_Print(json);
+        FILE *fp = fopen(Temp_Home_User_Dir, "w");
+        printf("%s\n", json_str);
+        fputs(json_str, fp);
+        fclose(fp);
+        cJSON_free(json_str);
+        cJSON_Delete(json);
+        printf("%s\n");
     }
     else
     {
@@ -71,9 +83,8 @@ strcat(Temp_Home_User_Dir,Todo_File_Name);
         fprintf(file, "#init data file for todo app command line \n");
         fclose(file);
         printf("create data file sucssesfully in %s .\n", Temp_Home_User_Dir);
-       
 
-    }
+        }
 
 
 

@@ -8,14 +8,39 @@
 #include <dirent.h>
 #include <dirent.h>
 #include <errno.h>
-
+#include "tree_list_path.h"
 #include "list_task.h"
 
 
 
-void list_task( char home_user_dir[], char foldername [], char filename[] )
+void list_task( char FULL_Todo_Path[],char Home_User_Dir[], char Todo_File_Name [] )
 {
-    printf(home_user_dir,foldername,filename, "\n");
-    printf("\ntttttttttest \n list list_task\n");
+    char Temp_Home_User_Dir [200];
 
+
+    // printf("\naaaaa\n");
+	// printf(Home_User_Dir);
+	// printf("\n");
+	// printf(Todo_File_Name, "\n");
+	// printf("\n");
+	// printf(FULL_Todo_Path, "\n");
+    // printf("\ntttttttttest \n list list_task\n");
+
+
+
+    // FILE *fptr;
+    // fptr = fopen(FULL_Todo_Path, "r");
+    // char myString[100];
+    // while(fgets(myString, 100, fptr)) {
+    //     printf("%s", myString);
+    // }
+    // fclose(fptr);
+
+    strcat(Temp_Home_User_Dir,Home_User_Dir);
+    strcat(Temp_Home_User_Dir,"/.todo");
+    //printf(Temp_Home_User_Dir,"\n");
+    DIR *d;
+    struct dirent *dir;
+    d = opendir(Temp_Home_User_Dir);
+    tree_list_path(FULL_Todo_Path,Home_User_Dir,Todo_File_Name);
 }
