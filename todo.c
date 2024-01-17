@@ -121,12 +121,14 @@ int main (int argc, char** argv)
 		{
 			printf("\n");
 			blue();
-			printf("init add edit deletee\n");
-			printf(Home_User_Dir);
+			printf(" init add edit delete\n");
+			printf("=========================\n");
 			printf("\n");
-			printf(Todo_File_Name, "\n");
-			printf("\n");
-			printf(FULL_Todo_Path, "\n");
+			// printf(Home_User_Dir);
+			// printf("\n");
+			// printf(Todo_File_Name, "\n");
+			// printf("\n");
+			// printf(FULL_Todo_Path, "\n");
 			
 			reset();
 			list_task (FULL_Todo_Path,Home_User_Dir ,Todo_File_Name);
