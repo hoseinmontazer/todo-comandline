@@ -62,6 +62,7 @@ void  tree_list_path(char FULL_Todo_Path[],char Home_User_Dir[], char Todo_File_
 
     strcat(Temp_Home_User_Dir,getenv("HOME"));
     //printf(Temp_Home_User_Dir,"\n");
+    strcpy(Temp_Home_User_Dir, getenv("HOME"));
     printf("default path is zzzzzzzzzz %s\n", Temp_Home_User_Dir);
     strcat(Temp_Home_User_Dir,"/.todo");
     //printf(Temp_Home_User_Dir,"\n");
