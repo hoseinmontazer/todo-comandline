@@ -1,18 +1,15 @@
 #include "tree_list_path.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
 #include <dirent.h>
-
-
-
 #include <unistd.h>
-#include <sys/types.h>
-#include <dirent.h>
-#include <stdio.h>
-#include <string.h>
+
+
+
 
 
 // void red () {
@@ -63,9 +60,12 @@ void  tree_list_path(char FULL_Todo_Path[],char Home_User_Dir[], char Todo_File_
     char Temp_Home_User_Dir [200];
 
 
-    strcat(Temp_Home_User_Dir,Home_User_Dir);
+    strcat(Temp_Home_User_Dir,getenv("HOME"));
+    //printf(Temp_Home_User_Dir,"\n");
+    printf("default path is zzzzzzzzzz %s\n", Temp_Home_User_Dir);
     strcat(Temp_Home_User_Dir,"/.todo");
     //printf(Temp_Home_User_Dir,"\n");
+    printf("default path is ssss %s\n", Temp_Home_User_Dir);
     listdir(Temp_Home_User_Dir, 2);
     
 }

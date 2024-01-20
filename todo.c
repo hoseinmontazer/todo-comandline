@@ -60,18 +60,20 @@ int main (int argc, char** argv)
 	char Temp_Todo_File_Name [200];
     char FULL_Todo_Path [200];
 
-	char * Todo_File_Name = "/.todo/data.json";
-	char * Todo_Path = "/.todo/data.json";
- 	char * Home_User_Dir= getenv("HOME");
+	char Todo_File_Name[] = "/.todo/data.json";
+	char Todo_Path[] = "/.todo/data.json";
+ 	// char * Home_User_Dir = getenv("HOME");
 
 	// printf("Home path is %s\n",Home_User_Dir);
 	// printf("Todo_File_name path is %s\n",Todo_File_Name);
 
-	strcat(Temp_Home_User_Dir,Home_User_Dir);
+	// strcat(Temp_Home_User_Dir,Home_User_Dir);
+	strcat(Temp_Home_User_Dir,getenv("HOME"));
 	strcat(Temp_Home_User_Dir,Todo_File_Name);
 
 
-	strcat(FULL_Todo_Path,Home_User_Dir);
+	//strcat(FULL_Todo_Path,Home_User_Dir);
+	strcat(FULL_Todo_Path,getenv("HOME"));
 	strcat(FULL_Todo_Path,Todo_File_Name);
 
 
@@ -91,13 +93,15 @@ int main (int argc, char** argv)
 
 			if (strcmp( argv[1] ,"init") ==0){
 
-				init_path (Home_User_Dir ,Todo_File_Name);
+				//init_path (Home_User_Dir ,Todo_File_Name);
+				init_path (getenv("HOME") ,Todo_File_Name);
 
 
 			}
 			else if (strcmp( argv[1] ,"list") ==0){
 
-				list_task (FULL_Todo_Path,Home_User_Dir ,Todo_File_Name);
+				//list_task (FULL_Todo_Path,Home_User_Dir ,Todo_File_Name);
+				list_task (FULL_Todo_Path,getenv("HOME") ,Todo_File_Name);
 
 			}
 			else if (strcmp( argv[1] ,"help") ==0)
@@ -121,7 +125,7 @@ int main (int argc, char** argv)
 		{
 			printf("\n");
 			blue();
-			printf(" init add edit delete\n");
+			printf(" init list add edit delete\n");
 			printf("=========================\n");
 			printf("\n");
 			// printf(Home_User_Dir);
@@ -131,7 +135,8 @@ int main (int argc, char** argv)
 			// printf(FULL_Todo_Path, "\n");
 			
 			reset();
-			list_task (FULL_Todo_Path,Home_User_Dir ,Todo_File_Name);
+			// list_task (FULL_Todo_Path,Home_User_Dir ,Todo_File_Name);
+			list_task (FULL_Todo_Path,getenv("HOME") ,Todo_File_Name);
 
 		}
 	}
@@ -148,7 +153,8 @@ int main (int argc, char** argv)
 
 			if (strcmp( argv[1] ,"init") ==0){
 
-				init_path (Home_User_Dir ,Todo_File_Name);
+				// init_path (Home_User_Dir ,Todo_File_Name);
+				init_path (getenv("HOME") ,Todo_File_Name);
 
 
 			}
@@ -164,7 +170,8 @@ int main (int argc, char** argv)
 			// blue();
 			// printf("init add edit delete\n", Temp_Home_User_Dir);
 			// reset();
-			list_task (FULL_Todo_Path,Home_User_Dir,Todo_File_Name);
+			//list_task (FULL_Todo_Path,Home_User_Dir,Todo_File_Name);
+			list_task (FULL_Todo_Path,getenv("HOME"),Todo_File_Name);
 
 		}
 

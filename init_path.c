@@ -69,7 +69,7 @@ strcat(Temp_Home_User_Dir,Todo_File_Name);
         fclose(fp);
         cJSON_free(json_str);
         cJSON_Delete(json);
-        printf("%s\n");
+        // printf("%s\n");
     }
     else
     {

@@ -36,11 +36,11 @@ void list_task( char FULL_Todo_Path[],char Home_User_Dir[], char Todo_File_Name 
     // }
     // fclose(fptr);
 
-    strcat(Temp_Home_User_Dir,Home_User_Dir);
+    strcat(Temp_Home_User_Dir,getenv("HOME"));
     strcat(Temp_Home_User_Dir,"/.todo");
     //printf(Temp_Home_User_Dir,"\n");
     DIR *d;
     struct dirent *dir;
     d = opendir(Temp_Home_User_Dir);
-    tree_list_path(FULL_Todo_Path,Home_User_Dir,Todo_File_Name);
+    tree_list_path(FULL_Todo_Path,getenv("HOME"),Todo_File_Name);
 }
