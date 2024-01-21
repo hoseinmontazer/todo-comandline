@@ -76,7 +76,7 @@ int main (int argc, char** argv)
 				printf("\n");
 				print_color("blue");
 				printf("  init list add edit delete\n");
-				printf("=============================\n");
+				printf("===============================================\n");
 				printf("\n");
 				print_color("reset");
 				init_path (getenv("HOME") ,Todo_File_Name);
@@ -87,7 +87,7 @@ int main (int argc, char** argv)
 				printf("\n");
 				print_color("blue");
 				printf("  init list add edit delete\n");
-				printf("=============================\n");
+				printf("===============================================\n");
 				printf("\n");
 				print_color("reset");
 				list_task (FULL_Todo_Path,getenv("HOME") ,Todo_File_Name);
@@ -112,10 +112,10 @@ int main (int argc, char** argv)
 			//printf("your argument is: argv[2] %s\n", argv[2]);
 			//printf("Too many arguments supplied.\n");
 			if (strcmp( argv[1] ,"add") ==0){
-				printf("\n");
+				//printf("\n");
 				print_color("blue");
-				printf("  init list add edit delete\n");
-				printf("=============================\n");
+				printf("           init list add edit delete           \n");
+				printf("===============================================\n");
 				printf("\n");
 				print_color("reset");
 				add_task (FULL_Todo_Path,getenv("HOME") ,argv[2]);
@@ -128,7 +128,7 @@ int main (int argc, char** argv)
 			printf("\n");
 			print_color("blue");
 			printf("  init list add edit delete\n");
-			printf("=============================\n");
+			printf("===============================================\n");
 			printf("\n");
 			print_color("reset");
 			// list_task (FULL_Todo_Path,Home_User_Dir ,Todo_File_Name);
