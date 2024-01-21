@@ -1,1 +1,0 @@
-a/home/hosein/.todo/data.json

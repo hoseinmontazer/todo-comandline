@@ -11,28 +11,10 @@
 #include "init_path.h"
 #include "list_task.h"
 #include "check_path.h"
+#include "add_task.h"
+#include "print_color.h"
 
 
-
-
-void red () {
-	printf("\033[1;31m");
-}
-
-void yellow () {
-	printf("\033[1;33m");
-}
-
-void green () {
-	printf("\033[0;32m");
-}
-void blue () {
-	printf("\033[0;34m");
-}
-
-void reset () {
-	printf("\033[0m");
-}
 
 
 // return true if the file specified by the filename exists
@@ -78,11 +60,11 @@ int main (int argc, char** argv)
 
 
 	printf("\n");
-	yellow();
+	print_color("yellow");
 	printf("=============================================== \n");
 	printf("=                   TODO LIST                 = \n");
 	printf("=============================================== \n");
-	reset();
+	print_color("reset");
 	if (file_exists(Temp_Home_User_Dir))
 	{
         // printf("File path exist \n", Temp_Home_User_Dir);
@@ -90,51 +72,65 @@ int main (int argc, char** argv)
 		if( argc == 2 )
 		{
 			printf("your argument is: %s\n", argv[1]);
-
 			if (strcmp( argv[1] ,"init") ==0){
-
-				//init_path (Home_User_Dir ,Todo_File_Name);
+				printf("\n");
+				print_color("blue");
+				printf("  init list add edit delete\n");
+				printf("=============================\n");
+				printf("\n");
+				print_color("reset");
 				init_path (getenv("HOME") ,Todo_File_Name);
 
 
 			}
 			else if (strcmp( argv[1] ,"list") ==0){
-
-				//list_task (FULL_Todo_Path,Home_User_Dir ,Todo_File_Name);
+				printf("\n");
+				print_color("blue");
+				printf("  init list add edit delete\n");
+				printf("=============================\n");
+				printf("\n");
+				print_color("reset");
 				list_task (FULL_Todo_Path,getenv("HOME") ,Todo_File_Name);
 
 			}
 			else if (strcmp( argv[1] ,"help") ==0)
 			{
 				printf("\n");
-				blue();
+				print_color("blue");
 				printf("1- init     initial path.\n");
 				printf("2- list     list all task from list.\n");
 				printf("3- add      create a new task in todo list.\n");
 				printf("4- edit     change and edit a task.\n");
 				printf("5- delete   remove a task from list.\n");
-				reset();
+				print_color("reset");
 			}
 
 		}
 		else if (argc > 2)
 		{
-			printf("Too many arguments supplied.\n");
+			//printf("your argument is: argv[1] %s\n", argv[1]);
+			//printf("your argument is: argv[2] %s\n", argv[2]);
+			//printf("Too many arguments supplied.\n");
+			if (strcmp( argv[1] ,"add") ==0){
+				printf("\n");
+				print_color("blue");
+				printf("  init list add edit delete\n");
+				printf("=============================\n");
+				printf("\n");
+				print_color("reset");
+				add_task (FULL_Todo_Path,getenv("HOME") ,argv[2]);
+
+			}
+
 		}
 		else
 		{
 			printf("\n");
-			blue();
-			printf(" init list add edit delete\n");
-			printf("=========================\n");
+			print_color("blue");
+			printf("  init list add edit delete\n");
+			printf("=============================\n");
 			printf("\n");
-			// printf(Home_User_Dir);
-			// printf("\n");
-			// printf(Todo_File_Name, "\n");
-			// printf("\n");
-			// printf(FULL_Todo_Path, "\n");
-			
-			reset();
+			print_color("reset");
 			// list_task (FULL_Todo_Path,Home_User_Dir ,Todo_File_Name);
 			list_task (FULL_Todo_Path,getenv("HOME") ,Todo_File_Name);
 
@@ -143,9 +139,9 @@ int main (int argc, char** argv)
     else
 	{
 		printf("\n");
-		red();
+		print_color("red");
         printf("File %s doesn't exist. \n", Temp_Home_User_Dir);
-		reset();
+		print_color("reset");
 
 		if( argc == 2 )
 		{

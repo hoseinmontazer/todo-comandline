@@ -17,25 +17,6 @@ void list_task( char FULL_Todo_Path[],char Home_User_Dir[], char Todo_File_Name 
 {
     char Temp_Home_User_Dir [200];
 
-
-    // printf("\naaaaa\n");
-	// printf(Home_User_Dir);
-	// printf("\n");
-	// printf(Todo_File_Name, "\n");
-	// printf("\n");
-	// printf(FULL_Todo_Path, "\n");
-    // printf("\ntttttttttest \n list list_task\n");
-
-
-
-    // FILE *fptr;
-    // fptr = fopen(FULL_Todo_Path, "r");
-    // char myString[100];
-    // while(fgets(myString, 100, fptr)) {
-    //     printf("%s", myString);
-    // }
-    // fclose(fptr);
-
     strcat(Temp_Home_User_Dir,getenv("HOME"));
     strcat(Temp_Home_User_Dir,"/.todo");
     //printf(Temp_Home_User_Dir,"\n");
