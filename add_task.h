@@ -13,6 +13,7 @@
 #include "init_path.h"
 #include "list_task.h"
 #include "check_path.h"
+#include "print_task.h"
 #define BUFFER_SIZE 15
 
 
@@ -53,6 +54,7 @@ void add_task( char FULL_Todo_Path[],char Home_User_Dir[], char user_task_name [
 	if(access (Temp_Home_User_Dir, F_OK) == 0)
     {
 		printf("data file is exsited in %s .\n", Temp_Home_User_Dir);
+		print_task(Temp_Home_User_Dir);
 
 
     }
