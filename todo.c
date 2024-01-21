@@ -86,7 +86,7 @@ int main (int argc, char** argv)
 			else if (strcmp( argv[1] ,"list") ==0){
 				printf("\n");
 				print_color("blue");
-				printf("  init list add edit delete\n");
+				printf("           init list add edit delete           \n");
 				printf("===============================================\n");
 				printf("\n");
 				print_color("reset");
@@ -127,7 +127,7 @@ int main (int argc, char** argv)
 		{
 			printf("\n");
 			print_color("blue");
-			printf("  init list add edit delete\n");
+			printf("           init list add edit delete           \n");
 			printf("===============================================\n");
 			printf("\n");
 			print_color("reset");
