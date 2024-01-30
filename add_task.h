@@ -29,6 +29,7 @@ void add_task( char FULL_Todo_Path[],char Home_User_Dir[], char user_task_name [
 	char Description[1000];
 	//int TaskIsActive = 1;
 	int TaskIsActive = 1;
+	struct stat st = {0};
 
 
 
@@ -60,6 +61,24 @@ void add_task( char FULL_Todo_Path[],char Home_User_Dir[], char user_task_name [
     }
 	else if(access (Temp_Home_User_Dir, F_OK) == -1)
     {
+
+		char *del = &Temp_Home_User_Dir[strlen(Temp_Home_User_Dir)];
+		while (del > Temp_Home_User_Dir && *del != '/')
+			del--;
+
+		if (*del== '/')
+		{
+			printf("deleteee");
+			*del= '\0';
+		}
+		printf("user_task_name task path is: %s\n", Temp_Home_User_Dir);
+
+
+		if (stat(Temp_Home_User_Dir, &st) == -1) {
+			mkdir(Temp_Home_User_Dir, 0700);
+		}
+		
+
 		printf("\033[0;32m");
 		printf("Enter your task name: \n");
 		printf("\033[0m");
