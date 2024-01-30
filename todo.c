@@ -75,7 +75,7 @@ int main (int argc, char** argv)
 			if (strcmp( argv[1] ,"init") ==0){
 				printf("\n");
 				print_color("blue");
-				printf("  init list add edit delete\n");
+				printf("           init list pr add edit delete           \n");
 				printf("===============================================\n");
 				printf("\n");
 				print_color("reset");
@@ -86,7 +86,7 @@ int main (int argc, char** argv)
 			else if (strcmp( argv[1] ,"list") ==0){
 				printf("\n");
 				print_color("blue");
-				printf("           init list add edit delete           \n");
+				printf("           init list pr add edit delete           \n");
 				printf("===============================================\n");
 				printf("\n");
 				print_color("reset");
@@ -114,11 +114,20 @@ int main (int argc, char** argv)
 			if (strcmp( argv[1] ,"add") ==0){
 				//printf("\n");
 				print_color("blue");
-				printf("           init list add edit delete           \n");
+				printf("           init list pr add edit delete           \n");
 				printf("===============================================\n");
 				printf("\n");
 				print_color("reset");
 				add_task (FULL_Todo_Path,getenv("HOME") ,argv[2]);
+			}
+			else if (strcmp( argv[1] ,"pr") ==0)
+			{
+				print_color("blue");
+				printf("           init list pr add edit delete           \n");
+				printf("===============================================\n");
+				printf("\n");
+				print_color("reset");
+				print_task(getenv("HOME") ,argv[2]);
 
 			}
 
@@ -127,7 +136,7 @@ int main (int argc, char** argv)
 		{
 			printf("\n");
 			print_color("blue");
-			printf("           init list add edit delete           \n");
+			printf("           init list pr add edit delete           \n");
 			printf("===============================================\n");
 			printf("\n");
 			print_color("reset");
