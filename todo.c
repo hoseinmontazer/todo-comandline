@@ -142,6 +142,16 @@ int main (int argc, char** argv)
 				print_color("reset");
 			}
 
+			else if (strcmp( argv[1] ,"pr") ==0){
+				printf("\n");
+				print_color("blue");
+				printf("           init list pr add edit delete           \n");
+				printf("===============================================\n");
+				printf("\n");
+				print_color("reset");
+				print_task(getenv("HOME") ,argv[2]);
+
+			}
 		}
 		else if (argc > 2)
 		{
