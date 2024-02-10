@@ -10,7 +10,7 @@
 #include <errno.h>
 #include <cjson/cJSON.h>
 #include "init_path.h"
-
+#include "text_color.h"
 
 
 
@@ -22,11 +22,11 @@ void init_path( char *Home_User_Dir , char *Todo_File_Name)
     char filepath[500];
     //char *user_file_path;
     char Temp_Home_User_Dir[500];
-
+    char Task_addr[200];
     char user_file_path[500];
     char ch;
     int i;
-    
+    struct stat st = {0};
 //TO DO
 /*
 there is two bug and feature
@@ -34,11 +34,13 @@ there is two bug and feature
 2) befor init file path  should check that is avilable or not from  config file
 */
 
+    //printf ("home path is %s\n" , Home_User_Dir );
+    //printf ("Todo_File_Name path is %s\n" , Todo_File_Name );
+    strcat(Temp_Home_User_Dir,Home_User_Dir);
+    strcat(Temp_Home_User_Dir,Todo_File_Name);
+	strcat(Task_addr,Temp_Home_User_Dir);
+	strcpy(Task_addr,Temp_Home_User_Dir);
 
-printf ("home path is %s\n" , Home_User_Dir );
-printf ("Todo_File_Name path is %s\n" , Todo_File_Name );
-strcat(Temp_Home_User_Dir,Home_User_Dir);
-strcat(Temp_Home_User_Dir,Todo_File_Name);
 
     DIR* dir = opendir(Home_User_Dir);
 
@@ -57,32 +59,44 @@ strcat(Temp_Home_User_Dir,Todo_File_Name);
     }
     else if(access (Temp_Home_User_Dir, F_OK) == 0)
     {
-        printf("data file is exsited in %s .\n", Temp_Home_User_Dir);
-        cJSON *json = cJSON_CreateObject();
-        cJSON_AddStringToObject(json, "name", "John Doe");
-        cJSON_AddNumberToObject(json, "age", 30);
-        cJSON_AddStringToObject(json, "email", "john.doe@example.com");
-        char *json_str = cJSON_Print(json);
-        FILE *fp = fopen(Temp_Home_User_Dir, "w");
-        printf("%s\n", json_str);
-        fputs(json_str, fp);
-        fclose(fp);
-        cJSON_free(json_str);
-        cJSON_Delete(json);
-        // printf("%s\n");
+        text_color("green");
+        printf("\e[1mdata file is exsited in %s.\e[m\n", Temp_Home_User_Dir);
+        text_color("reset");
+		printf("\n");
+		text_color("blue");
+		printf("1- init     initial path.\n");
+		printf("2- list     list all task from list.\n");
+		printf("3- add      create a new task in todo list.\n");
+		printf("4- edit     change and edit a task.\n");
+		printf("5- delete   remove a task from list.\n");
+		printf("6- pr       print all or a task from list.\n");
+        printf("\n");
+		text_color("reset");
     }
     else
     {
-        // strcat(Temp_Home_User_Dir,Home_User_Dir);
-	    // strcat(Temp_Home_User_Dir,Todo_File_Name);
-
-        printf("thirth path %s\n",Temp_Home_User_Dir);
+        text_color ("red");
         printf("data file is not existed. init data file\n");
+        text_color ("reset");
+        char *del = &Temp_Home_User_Dir[strlen(Temp_Home_User_Dir)];
+		while (del > Temp_Home_User_Dir && *del != '/')
+			del--;
+
+		if (*del== '/')
+		{
+			//printf("deleteee\n");
+			*del= '\0';
+		}
+        if (stat(Temp_Home_User_Dir, &st) == -1) {
+			printf("dir not available, create dir\n");
+            //printf("dir is: %s %s %s %s.\n", Temp_Home_User_Dir , Home_User_Dir, Todo_File_Name , Task_addr);
+			mkdir(Temp_Home_User_Dir, 0700);
+		}
         //FILE*  file = fopen("/home/hosein/.todo/data.json" ,"w");
-        FILE*  file = fopen(Temp_Home_User_Dir ,"w");
+        FILE*  file = fopen(Task_addr ,"w");
         fprintf(file, "#init data file for todo app command line \n");
         fclose(file);
-        printf("create data file sucssesfully in %s .\n", Temp_Home_User_Dir);
+        printf("create data file sucssesfully in %s .\n", Task_addr);
 
         }
 

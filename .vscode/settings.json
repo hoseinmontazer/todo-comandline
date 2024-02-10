@@ -1,5 +1,11 @@
 {
     "files.associations": {
-        "stat.h": "c"
-    }
+        "stat.h": "c",
+        "string.h": "c",
+        "curses.h": "c",
+        "init_path.h": "c",
+        "stdio.h": "c",
+        "print_task.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

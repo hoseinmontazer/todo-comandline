@@ -64,8 +64,8 @@ void print_task(char Home_User_Dir[], char user_task_name [] )
 	cJSON *taskisactive = cJSON_GetObjectItemCaseSensitive(json, "taskisactive");
 	cJSON *description = cJSON_GetObjectItemCaseSensitive(json, "description");
     if (cJSON_IsString(taskname) && (taskname->valuestring != NULL)) { 
-        printf("Task Name: %s\n", taskname->valuestring);
-		printf("Description: %s\n", description->valuestring);
+        printf("\e[1mTask Name: %s\e[m\n", taskname->valuestring);
+		printf("\e[1mDescription: %s\e[m\n", description->valuestring);
     } 
   
     // delete the JSON object 

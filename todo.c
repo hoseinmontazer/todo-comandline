@@ -12,7 +12,42 @@
 #include "list_task.h"
 #include "check_path.h"
 #include "add_task.h"
-#include "print_color.h"
+
+
+
+
+void  print_color( char color []) {
+    if (strcmp( color ,"red") ==0)
+    {
+        printf("\033[1;31m");
+    }
+    else if (strcmp( color ,"blue") ==0)
+    {
+        printf("\033[0;34m");
+    }
+    else if (strcmp( color ,"blueb") ==0)
+    {
+        printf("\033[0;34m");
+    }
+    else if (strcmp( color ,"yellow") ==0)
+    {
+        printf("\033[1;33m");
+    }
+    else if (strcmp( color ,"green") ==0)
+    {
+        printf("\033[0;32m");
+    }
+    else if (strcmp( color ,"reset") ==0)
+    {
+        printf("\033[0m");
+    }
+    else
+    {
+        printf("\033[0;37m");
+    }
+
+    
+}
 
 
 
@@ -71,6 +106,7 @@ int main (int argc, char** argv)
 
 		if( argc == 2 )
 		{
+			
 			printf("your argument is: %s\n", argv[1]);
 			if (strcmp( argv[1] ,"init") ==0){
 				printf("\n");
@@ -96,12 +132,13 @@ int main (int argc, char** argv)
 			else if (strcmp( argv[1] ,"help") ==0)
 			{
 				printf("\n");
-				print_color("blue");
+				print_color("blueb");
 				printf("1- init     initial path.\n");
 				printf("2- list     list all task from list.\n");
 				printf("3- add      create a new task in todo list.\n");
 				printf("4- edit     change and edit a task.\n");
 				printf("5- delete   remove a task from list.\n");
+				printf("6- pr       print all or a task from list.\n");
 				print_color("reset");
 			}
 
@@ -147,9 +184,21 @@ int main (int argc, char** argv)
 	}
     else
 	{
+		
 		printf("\n");
 		print_color("red");
         printf("File %s doesn't exist. \n", Temp_Home_User_Dir);
+		print_color("reset");
+
+		printf("\n");
+		print_color("blue");
+		printf("1- init     initial path.\n");
+		printf("2- list     list all task from list.\n");
+		printf("3- add      create a new task in todo list.\n");
+		printf("4- edit     change and edit a task.\n");
+		printf("5- delete   remove a task from list.\n");
+		printf("6- pr       print all or a task from list.\n");
+		printf("\n");
 		print_color("reset");
 
 		if( argc == 2 )
@@ -176,7 +225,7 @@ int main (int argc, char** argv)
 			// printf("init add edit delete\n", Temp_Home_User_Dir);
 			// reset();
 			//list_task (FULL_Todo_Path,Home_User_Dir,Todo_File_Name);
-			list_task (FULL_Todo_Path,getenv("HOME"),Todo_File_Name);
+			//list_task (FULL_Todo_Path,getenv("HOME"),Todo_File_Name);
 
 		}
 

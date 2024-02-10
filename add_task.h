@@ -14,7 +14,6 @@
 #include "list_task.h"
 #include "check_path.h"
 #include "print_task.h"
-#define BUFFER_SIZE 15
 
 
 
@@ -24,6 +23,7 @@
 void add_task( char FULL_Todo_Path[],char Home_User_Dir[], char user_task_name [] )
 {
 	//char str[BUFFER_SIZE];
+	char Task_addr[200];
     char Temp_Home_User_Dir [200];
 	char TaskName[200];
 	char Description[1000];
@@ -37,6 +37,7 @@ void add_task( char FULL_Todo_Path[],char Home_User_Dir[], char user_task_name [
     strcat(Temp_Home_User_Dir,getenv("HOME"));
     //printf(Temp_Home_User_Dir,"\n");
     strcpy(Temp_Home_User_Dir, getenv("HOME"));
+
     //printf("default path is zzzzzzzzzz %s\n", Temp_Home_User_Dir);
     strcat(Temp_Home_User_Dir,"/.todo/");
     //printf(Temp_Home_User_Dir,"\n");
@@ -47,6 +48,10 @@ void add_task( char FULL_Todo_Path[],char Home_User_Dir[], char user_task_name [
 	printf("your task path is: %s\n", Temp_Home_User_Dir);
 	//printf("\n");
 	printf("\033[0m");
+	strcat(Task_addr,Temp_Home_User_Dir);
+	strcpy(Task_addr,Temp_Home_User_Dir);
+	//printf("your task path is: %s %s\n", Task_addr ,Temp_Home_User_Dir);
+	
 
 
 
@@ -68,19 +73,19 @@ void add_task( char FULL_Todo_Path[],char Home_User_Dir[], char user_task_name [
 
 		if (*del== '/')
 		{
-			printf("deleteee");
+			//printf("deleteee\n");
 			*del= '\0';
 		}
-		printf("user_task_name task path is: %s\n", Temp_Home_User_Dir);
+		//printf("user_task_name task path is: %s\n", Temp_Home_User_Dir);
 
 
 		if (stat(Temp_Home_User_Dir, &st) == -1) {
+			printf("dir not available, create dir\n");
 			mkdir(Temp_Home_User_Dir, 0700);
 		}
-		
 
 		printf("\033[0;32m");
-		printf("Enter your task name: \n");
+		printf("\e[1mEnter your task name:\e[m \n");
 		printf("\033[0m");
 		//fgets(TaskName, sizeof(TaskName), stdin);
 		if (fgets(TaskName, sizeof(TaskName), stdin) == NULL)
@@ -92,7 +97,7 @@ void add_task( char FULL_Todo_Path[],char Home_User_Dir[], char user_task_name [
 			TaskName [ strcspn (TaskName, "\n")] = 0;
 		}
 		printf("\033[0;32m");
-		printf("Enter your task description: \n");
+		printf("\e[1mEnter your task description:\e[m\n");
 		printf("\033[0m");
 		//fgets(Description, sizeof(Description), stdin);
 		if (fgets(Description, sizeof(Description), stdin) == NULL)
@@ -106,10 +111,9 @@ void add_task( char FULL_Todo_Path[],char Home_User_Dir[], char user_task_name [
 		//printf("Hello %s\n", TaskName);
 		//printf("Hello Description %s\n", Description);
 
-        FILE*  file = fopen(Temp_Home_User_Dir ,"w");
+        FILE*  file = fopen(Task_addr ,"w");
         fprintf(file, "#init data file for todo task, %s \n",user_task_name);
         fclose(file);
-        printf("init file sucssesfully in %s .\n", Temp_Home_User_Dir);
 		cJSON *json = cJSON_CreateObject();
 		//cJSON_AddStringToObject(json, "taskname", TaskName);
 		// cJSON_AddNumberToObject(json, "description", Description);
@@ -118,12 +122,15 @@ void add_task( char FULL_Todo_Path[],char Home_User_Dir[], char user_task_name [
         cJSON_AddNumberToObject(json, "taskisactive", TaskIsActive);
         cJSON_AddStringToObject(json, "description", Description);
 		char *json_str = cJSON_Print(json);
-		FILE *fp = fopen(Temp_Home_User_Dir, "w");
-		printf("%s\n", json_str);
+		FILE *fp = fopen(Task_addr, "w");
+		// printf("%s\n", json_str);
 		fputs(json_str, fp);
 		fclose(fp);
 		cJSON_free(json_str);
 		cJSON_Delete(json);
+		printf("init file sucssesfully in %s.\n", Task_addr);
+		
+		print_task(Task_addr, user_task_name);
     }
 
 
